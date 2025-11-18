@@ -12,35 +12,35 @@ const contactInfo = [
     icon: 'MapPin',
     title: 'Адрес',
     lines: [
-      '125009, г. Москва',
-      'ул. Академическая, д. 1',
-      'Метро "Площадь Гагарина"',
+      'г. Москва',
+      'ул. Академическая, д. 15',
+      'Метро "Университет"',
     ],
   },
   {
     icon: 'Phone',
     title: 'Телефоны',
     lines: [
-      'Приемная комиссия: +7 (495) 123-45-67',
-      'Деканат: +7 (495) 123-45-68',
-      'Справочная: +7 (495) 123-45-69',
+      'Приемная комиссия: +7 (495) 555-00-55',
+      'Учебная часть: +7 (495) 555-00-56',
+      'Справочная: +7 (495) 555-00-57',
     ],
   },
   {
     icon: 'Mail',
     title: 'Email',
     lines: [
-      'Общие вопросы: info@university.ru',
-      'Поступление: admission@university.ru',
-      'Пресс-служба: press@university.ru',
+      'Общие вопросы: info@edu-institution.ru',
+      'Поступление: admission@edu-institution.ru',
+      'Учебная часть: education@edu-institution.ru',
     ],
   },
   {
     icon: 'Clock',
-    title: 'Часы работы',
+    title: 'Режим работы',
     lines: [
-      'Понедельник - Пятница: 9:00 - 18:00',
-      'Суббота: 10:00 - 15:00',
+      'Понедельник - Пятница: 9:00 - 17:00',
+      'Суббота: 10:00 - 14:00',
       'Воскресенье: выходной',
     ],
   },
@@ -49,24 +49,24 @@ const contactInfo = [
 const departments = [
   {
     name: 'Приемная комиссия',
-    head: 'Иванова Елена Петровна',
-    phone: '+7 (495) 123-45-67',
-    email: 'admission@university.ru',
-    room: 'Каб. 101',
+    head: 'Секретарь приемной комиссии',
+    phone: '+7 (495) 555-00-55',
+    email: 'admission@edu-institution.ru',
+    room: 'Каб. 105',
   },
   {
-    name: 'Учебный отдел',
-    head: 'Петров Сергей Иванович',
-    phone: '+7 (495) 123-45-70',
-    email: 'education@university.ru',
-    room: 'Каб. 205',
+    name: 'Учебная часть',
+    head: 'Заведующий учебной частью',
+    phone: '+7 (495) 555-00-56',
+    email: 'education@edu-institution.ru',
+    room: 'Каб. 201',
   },
   {
-    name: 'Отдел международных связей',
-    head: 'Смирнова Ольга Александровна',
-    phone: '+7 (495) 123-45-71',
-    email: 'international@university.ru',
-    room: 'Каб. 310',
+    name: 'Бухгалтерия',
+    head: 'Главный бухгалтер',
+    phone: '+7 (495) 555-00-58',
+    email: 'accounting@edu-institution.ru',
+    room: 'Каб. 108',
   },
 ];
 
@@ -114,9 +114,9 @@ export default function Contacts() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Структурные подразделения</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Основные отделы</h2>
               <p className="text-muted-foreground">
-                Контакты основных отделов университета
+                Контакты основных подразделений
               </p>
             </div>
             <div className="grid md:grid-cols-3 gap-6">
@@ -214,7 +214,7 @@ export default function Contacts() {
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Как нас найти</h2>
               <p className="text-muted-foreground">
-                Университет расположен в центре Москвы, в 5 минутах от метро
+                Удобное расположение в центре Москвы
               </p>
             </div>
             <Card className="overflow-hidden">

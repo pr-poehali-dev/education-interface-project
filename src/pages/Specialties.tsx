@@ -5,45 +5,34 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Icon from '@/components/ui/icon';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 const specialtiesData = [
   {
-    category: 'IT и технологии',
+    category: 'Информационные технологии',
     items: [
       {
-        title: 'Программная инженерия',
-        code: '09.03.04',
-        duration: '4 года',
+        title: 'Информационные системы',
+        code: '09.02.07',
+        duration: '3 года 10 месяцев',
         format: 'Очная',
         budget: 25,
-        paid: 50,
-        description: 'Подготовка специалистов в области разработки программного обеспечения',
-        subjects: ['Математика', 'Информатика', 'Русский язык'],
-        minScore: 240,
+        paid: 30,
+        description: 'Разработка ПО, системное администрирование',
+        subjects: ['Математика', 'Информатика'],
+        minScore: 0,
       },
       {
-        title: 'Информационная безопасность',
-        code: '10.03.01',
-        duration: '4 года',
+        title: 'Компьютерные сети',
+        code: '09.02.06',
+        duration: '3 года 10 месяцев',
         format: 'Очная',
         budget: 20,
-        paid: 30,
-        description: 'Защита информации и киберпространства',
-        subjects: ['Математика', 'Информатика', 'Русский язык'],
-        minScore: 235,
-      },
-      {
-        title: 'Искусственный интеллект',
-        code: '09.03.01',
-        duration: '4 года',
-        format: 'Очная',
-        budget: 15,
-        paid: 40,
-        description: 'Разработка систем машинного обучения и нейросетей',
-        subjects: ['Математика', 'Информатика', 'Русский язык'],
-        minScore: 250,
+        paid: 25,
+        description: 'Настройка и сопровождение сетевых систем',
+        subjects: ['Математика', 'Информатика'],
+        minScore: 0,
       },
     ],
   },
@@ -51,37 +40,26 @@ const specialtiesData = [
     category: 'Экономика',
     items: [
       {
-        title: 'Экономика',
-        code: '38.03.01',
-        duration: '4 года',
+        title: 'Экономика и бухгалтерский учёт',
+        code: '38.02.01',
+        duration: '2 года 10 месяцев',
         format: 'Очная/Заочная',
         budget: 30,
-        paid: 60,
-        description: 'Подготовка экономистов-аналитиков для различных отраслей',
-        subjects: ['Математика', 'Обществознание', 'Русский язык'],
-        minScore: 225,
+        paid: 40,
+        description: 'Финансовый учёт, налогообложение',
+        subjects: ['Математика', 'Русский язык'],
+        minScore: 0,
       },
       {
-        title: 'Менеджмент',
-        code: '38.03.02',
-        duration: '4 года',
-        format: 'Очная/Заочная',
-        budget: 25,
-        paid: 70,
-        description: 'Управление организациями и проектами',
-        subjects: ['Математика', 'Обществознание', 'Русский язык'],
-        minScore: 220,
-      },
-      {
-        title: 'Финансы и кредит',
-        code: '38.03.01',
-        duration: '4 года',
+        title: 'Банковское дело',
+        code: '38.02.07',
+        duration: '2 года 10 месяцев',
         format: 'Очная',
-        budget: 20,
-        paid: 50,
-        description: 'Банковское дело и финансовый менеджмент',
-        subjects: ['Математика', 'Обществознание', 'Русский язык'],
-        minScore: 230,
+        budget: 25,
+        paid: 35,
+        description: 'Финансовые операции, кредитование',
+        subjects: ['Математика', 'Русский язык'],
+        minScore: 0,
       },
     ],
   },
@@ -89,53 +67,31 @@ const specialtiesData = [
     category: 'Право',
     items: [
       {
-        title: 'Юриспруденция',
-        code: '40.03.01',
-        duration: '4 года',
+        title: 'Право и организация социального обеспечения',
+        code: '40.02.01',
+        duration: '2 года 10 месяцев',
         format: 'Очная/Заочная',
-        budget: 35,
-        paid: 80,
-        description: 'Гражданское, уголовное и административное право',
-        subjects: ['Обществознание', 'История', 'Русский язык'],
-        minScore: 225,
-      },
-      {
-        title: 'Международное право',
-        code: '40.03.01',
-        duration: '4 года',
-        format: 'Очная',
-        budget: 15,
-        paid: 40,
-        description: 'Международные отношения и правовое регулирование',
-        subjects: ['Обществознание', 'История', 'Русский язык'],
-        minScore: 240,
+        budget: 20,
+        paid: 30,
+        description: 'Юридическое сопровождение, соцзащита',
+        subjects: ['Обществознание', 'История'],
+        minScore: 0,
       },
     ],
   },
   {
-    category: 'Медицина',
+    category: 'Строительство',
     items: [
       {
-        title: 'Лечебное дело',
-        code: '31.05.01',
-        duration: '6 лет',
-        format: 'Очная',
-        budget: 40,
-        paid: 20,
-        description: 'Подготовка врачей общей практики',
-        subjects: ['Химия', 'Биология', 'Русский язык'],
-        minScore: 260,
-      },
-      {
-        title: 'Стоматология',
-        code: '31.05.03',
-        duration: '5 лет',
+        title: 'Строительство и эксплуатация зданий',
+        code: '08.02.01',
+        duration: '3 года 10 месяцев',
         format: 'Очная',
         budget: 25,
         paid: 30,
-        description: 'Врач-стоматолог',
-        subjects: ['Химия', 'Биология', 'Русский язык'],
-        minScore: 255,
+        description: 'Проектирование, строительство',
+        subjects: ['Математика', 'Физика'],
+        minScore: 0,
       },
     ],
   },
@@ -153,7 +109,7 @@ export default function Specialties() {
           <div className="max-w-3xl mx-auto text-center space-y-4">
             <h1 className="text-4xl md:text-5xl font-bold">Специальности</h1>
             <p className="text-lg text-muted-foreground">
-              Более 50 программ бакалавриата и специалитета в различных областях знаний
+              Программы среднего профессионального образования по различным направлениям
             </p>
           </div>
         </div>
@@ -209,23 +165,10 @@ export default function Specialties() {
                             <span className="text-muted-foreground">Платно:</span>
                             <span className="ml-auto font-medium">{specialty.paid} мест</span>
                           </div>
-                          <div className="flex items-center text-sm">
-                            <Icon name="Award" className="h-4 w-4 mr-2 text-muted-foreground" />
-                            <span className="text-muted-foreground">Мин. балл:</span>
-                            <span className="ml-auto font-medium">{specialty.minScore}</span>
-                          </div>
+
                         </div>
 
-                        <div className="pt-2 border-t">
-                          <p className="text-xs text-muted-foreground mb-2">Предметы ЕГЭ:</p>
-                          <div className="flex flex-wrap gap-1">
-                            {specialty.subjects.map((subject, i) => (
-                              <Badge key={i} variant="secondary" className="text-xs">
-                                {subject}
-                              </Badge>
-                            ))}
-                          </div>
-                        </div>
+
 
                         <Link to="/apply">
                           <Button className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">

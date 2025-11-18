@@ -1,59 +1,59 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import FAQ from '@/components/FAQ';
 
 const stats = [
-  { value: '25+', label: 'Лет опыта' },
-  { value: '10 000+', label: 'Выпускников' },
-  { value: '50+', label: 'Специальностей' },
-  { value: '95%', label: 'Трудоустройство' },
+  { value: '15+', label: 'Лет на рынке образования' },
+  { value: '2500+', label: 'Выпускников' },
+  { value: '12', label: 'Специальностей' },
+  { value: '92%', label: 'Трудоустроенных' },
 ];
 
 const advantages = [
   {
     icon: 'Award',
-    title: 'Аккредитация',
-    description: 'Государственная аккредитация и международное признание дипломов',
+    title: 'Государственная аккредитация',
+    description: 'Дипломы государственного образца с признанием по всей РФ',
   },
   {
     icon: 'Users',
-    title: 'Преподаватели',
-    description: 'Ведущие специалисты и практики в своих областях',
+    title: 'Опытные преподаватели',
+    description: 'Квалифицированные специалисты с многолетним опытом работы',
   },
   {
-    icon: 'Building2',
-    title: 'Инфраструктура',
-    description: 'Современные лаборатории, библиотека и спортивные комплексы',
+    icon: 'BookOpen',
+    title: 'Современные программы',
+    description: 'Актуальные образовательные программы по ФГОС',
   },
   {
-    icon: 'Globe',
-    title: 'Международность',
-    description: 'Программы обмена и двойные дипломы с зарубежными вузами',
+    icon: 'Briefcase',
+    title: 'Практика и трудоустройство',
+    description: 'Помощь в прохождении практики и дальнейшем трудоустройстве',
   },
 ];
 
 const specialties = [
   {
-    title: 'Информационные технологии',
-    programs: 'Программная инженерия, Кибербезопасность',
-    duration: '4 года',
+    title: 'Информационные системы',
+    programs: 'Программирование, администрирование',
+    duration: '3 года 10 месяцев',
     format: 'Очная',
   },
   {
-    title: 'Экономика и управление',
-    programs: 'Менеджмент, Финансы и кредит',
-    duration: '4 года',
+    title: 'Экономика и бухучёт',
+    programs: 'Финансы, налогообложение',
+    duration: '2 года 10 месяцев',
     format: 'Очная/Заочная',
   },
   {
-    title: 'Юриспруденция',
-    programs: 'Гражданское, уголовное право',
-    duration: '4 года',
+    title: 'Право и соцобеспечение',
+    programs: 'Юридическое сопровождение',
+    duration: '2 года 10 месяцев',
     format: 'Очная',
   },
 ];
@@ -61,23 +61,23 @@ const specialties = [
 const faqItems = [
   {
     question: 'Какие документы нужны для поступления?',
-    answer: 'Для поступления необходимы: паспорт, аттестат или диплом о предыдущем образовании, результаты ЕГЭ (для бакалавриата), 6 фотографий 3×4, медицинская справка формы 086/у.',
+    answer: 'Для поступления необходимы: паспорт, аттестат об основном общем или среднем общем образовании, 6 фотографий 3x4, медицинская справка формы 086/у, СНИЛС.',
   },
   {
     question: 'Есть ли общежитие?',
-    answer: 'Да, университет предоставляет общежития для иногородних студентов. Места распределяются в порядке очереди среди поступивших на бюджетные места.',
+    answer: 'Да, учебное заведение предоставляет общежитие для иногородних студентов. Количество мест ограничено, распределение происходит в порядке очереди.',
   },
   {
-    question: 'Можно ли поступить без ЕГЭ?',
-    answer: 'Без ЕГЭ можно поступить на базе среднего профессионального образования (колледжа), сдав внутренние вступительные испытания университета.',
+    question: 'Какова стоимость обучения?',
+    answer: 'Обучение проводится на бюджетной основе (бесплатно) и на платной основе. Стоимость контракта зависит от специальности и составляет от 35 000 до 55 000 рублей в год.',
   },
   {
-    question: 'Какая стоимость обучения?',
-    answer: 'Стоимость обучения зависит от специальности и формы обучения. Диапазон от 150 000 до 300 000 рублей в год. Также доступны бюджетные места.',
+    question: 'Как проходит приёмная кампания?',
+    answer: 'Приём документов начинается 20 июня и заканчивается 15 августа. Зачисление происходит на основе среднего балла аттестата. Результаты публикуются на сайте.',
   },
   {
-    question: 'Есть ли военная кафедра?',
-    answer: 'Да, в университете функционирует военная кафедра. Студенты мужского пола могут пройти военную подготовку и получить военный билет.',
+    question: 'Можно ли перевестись из другого учебного заведения?',
+    answer: 'Да, перевод возможен при наличии свободных мест на курсе. Необходимо предоставить академическую справку и пройти процедуру перезачёта дисциплин.',
   },
 ];
 
@@ -101,7 +101,7 @@ export default function Home() {
               для развития карьеры
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/apply">
+              <Link to="/admission">
                 <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold text-base px-8">
                   Подать документы
                   <Icon name="ArrowRight" className="ml-2 h-5 w-5" />
@@ -202,7 +202,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20">
+      <section className="py-20 bg-muted/50">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
@@ -211,18 +211,7 @@ export default function Home() {
                 Ответы на самые популярные вопросы абитуриентов
               </p>
             </div>
-            <Accordion type="single" collapsible className="space-y-4">
-              {faqItems.map((item, index) => (
-                <AccordionItem key={index} value={`item-${index}`} className="border rounded-lg px-6">
-                  <AccordionTrigger className="text-left font-semibold hover:no-underline">
-                    {item.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground">
-                    {item.answer}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
+            <FAQ />
           </div>
         </div>
       </section>
@@ -235,7 +224,7 @@ export default function Home() {
               Подайте документы онлайн прямо сейчас. Наша приемная комиссия свяжется с вами в течение 24 часов.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <Link to="/apply">
+              <Link to="/admission">
                 <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold text-base px-8">
                   Подать документы
                   <Icon name="FileText" className="ml-2 h-5 w-5" />
