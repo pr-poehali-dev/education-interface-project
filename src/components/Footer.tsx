@@ -9,17 +9,17 @@ export default function Footer() {
           <div>
             <div className="flex items-center space-x-2 mb-4">
               <Icon name="GraduationCap" className="h-6 w-6 text-primary" />
-              <span className="font-bold text-primary">Образовательный центр</span>
+              <span className="font-bold text-primary">Образовательное учреждение</span>
             </div>
             <p className="text-sm text-muted-foreground">
-              Качественное образование для вашего будущего
+              Среднее профессиональное образование
             </p>
           </div>
 
           <div>
             <h3 className="font-semibold mb-4">Навигация</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/" className="text-muted-foreground hover:text-primary">Главная</Link></li>
+              <li><Link to="/home" className="text-muted-foreground hover:text-primary">Главная</Link></li>
               <li><Link to="/specialties" className="text-muted-foreground hover:text-primary">Специальности</Link></li>
               <li><Link to="/admission" className="text-muted-foreground hover:text-primary">Приемная комиссия</Link></li>
             </ul>
@@ -38,22 +38,22 @@ export default function Footer() {
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li className="flex items-center space-x-2">
                 <Icon name="Phone" className="h-4 w-4" />
-                <span>+7 (495) 123-45-67</span>
+                <span>+7 (495) 555-00-55</span>
               </li>
               <li className="flex items-center space-x-2">
                 <Icon name="Mail" className="h-4 w-4" />
-                <span>info@edu-center.ru</span>
+                <span>info@edu-institution.ru</span>
               </li>
               <li className="flex items-center space-x-2">
                 <Icon name="MapPin" className="h-4 w-4" />
-                <span>г. Москва, ул. Примерная, 1</span>
+                <span>г. Москва, ул. Академическая, 15</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} Образовательный центр. Все права защищены.</p>
+          <p>&copy; {new Date().getFullYear()} Образовательное учреждение. Все права защищены.</p>
         </div>
       </div>
     </footer>
