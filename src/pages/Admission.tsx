@@ -1,244 +1,240 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import Icon from "@/components/ui/icon";
-import { useState } from "react";
-import { toast } from "sonner";
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
+import { Badge } from '@/components/ui/badge';
+import Icon from '@/components/ui/icon';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+
+const steps = [
+  {
+    number: '1',
+    title: 'Регистрация заявления',
+    description: 'Заполните онлайн-заявление на нашем сайте или посетите приемную комиссию лично',
+    icon: 'FileText',
+  },
+  {
+    number: '2',
+    title: 'Подача документов',
+    description: 'Предоставьте необходимые документы: паспорт, аттестат, результаты ЕГЭ',
+    icon: 'FolderOpen',
+  },
+  {
+    number: '3',
+    title: 'Участие в конкурсе',
+    description: 'Следите за своим положением в конкурсном списке на сайте',
+    icon: 'TrendingUp',
+  },
+  {
+    number: '4',
+    title: 'Зачисление',
+    description: 'При успешном прохождении конкурса подпишите договор и начните обучение',
+    icon: 'CheckCircle2',
+  },
+];
+
+const documents = [
+  'Паспорт гражданина РФ (оригинал и копия)',
+  'Аттестат о среднем общем образовании или диплом СПО',
+  'Результаты ЕГЭ (автоматически передаются через систему)',
+  'СНИЛС (копия)',
+  '6 фотографий размером 3×4 см',
+  'Медицинская справка формы 086/у',
+  'Документы, подтверждающие льготы (при наличии)',
+];
+
+const contacts = [
+  {
+    icon: 'MapPin',
+    title: 'Адрес',
+    value: 'г. Москва, ул. Академическая, д. 1, каб. 101',
+  },
+  {
+    icon: 'Clock',
+    title: 'Часы работы',
+    value: 'Пн-Пт: 9:00-18:00, Сб: 10:00-15:00',
+  },
+  {
+    icon: 'Phone',
+    title: 'Телефон',
+    value: '+7 (495) 123-45-67',
+  },
+  {
+    icon: 'Mail',
+    title: 'Email',
+    value: 'admission@university.ru',
+  },
+];
+
+const importantDates = [
+  { date: '20 июня', event: 'Начало приема документов' },
+  { date: '25 июля', event: 'Окончание приема документов (бюджет)' },
+  { date: '3 августа', event: 'Публикация конкурсных списков' },
+  { date: '9 августа', event: 'Зачисление на бюджет' },
+  { date: '25 августа', event: 'Окончание приема на платное обучение' },
+];
 
 export default function Admission() {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    specialty: "",
-    message: ""
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast.success("Заявка отправлена! Мы свяжемся с вами в ближайшее время.");
-    setFormData({ fullName: "", email: "", phone: "", specialty: "", message: "" });
-  };
-
-  const faqItems = [
-    {
-      question: "Какие документы нужны для поступления?",
-      answer: "Для поступления необходимы: паспорт, аттестат об образовании (или его копия), 6 фотографий 3x4, медицинская справка формы 086/у, копия СНИЛС. Для некоторых специальностей могут потребоваться дополнительные документы."
-    },
-    {
-      question: "Когда начинается прием документов?",
-      answer: "Прием документов начинается с 20 июня и продолжается до 15 августа. Для поступающих на очно-заочную и заочную формы обучения прием документов может быть продлен до 1 декабря."
-    },
-    {
-      question: "Есть ли вступительные испытания?",
-      answer: "На большинство специальностей зачисление проводится по конкурсу аттестатов. Однако на некоторые направления (например, творческие специальности) могут проводиться дополнительные вступительные испытания."
-    },
-    {
-      question: "Можно ли подать документы онлайн?",
-      answer: "Да, мы принимаем документы в электронном виде через форму на сайте или на электронную почту приемной комиссии. Оригиналы документов необходимо будет предоставить при зачислении."
-    },
-    {
-      question: "Какие льготы предоставляются студентам?",
-      answer: "Студенты очной формы обучения имеют право на стипендию, льготный проезд, отсрочку от армии (для юношей). Также предусмотрены социальные стипендии для студентов из малообеспеченных семей."
-    },
-    {
-      question: "Есть ли общежитие для иногородних?",
-      answer: "Да, учебное заведение располагает общежитием для иногородних студентов. Количество мест ограничено, распределение проводится приемной комиссией по мере поступления заявок."
-    }
-  ];
-
   return (
-    <div className="min-h-screen bg-background">
-      <header className="bg-primary text-primary-foreground py-16">
+    <div className="min-h-screen flex flex-col">
+      <Header />
+
+      <section className="py-12 bg-gradient-to-br from-primary/5 to-accent/5">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Приемная комиссия</h1>
-          <p className="text-lg md:text-xl opacity-90 max-w-2xl">
-            Вся информация о поступлении и подаче документов
-          </p>
+          <div className="max-w-3xl mx-auto text-center space-y-4">
+            <Badge variant="secondary" className="text-sm px-4 py-1.5">
+              Прием 2025
+            </Badge>
+            <h1 className="text-4xl md:text-5xl font-bold">Приемная комиссия</h1>
+            <p className="text-lg text-muted-foreground">
+              Вся информация о поступлении и необходимых документах
+            </p>
+          </div>
         </div>
-      </header>
+      </section>
 
-      <main className="container mx-auto px-4 py-12">
-        <div className="grid lg:grid-cols-3 gap-8 mb-16">
-          <Card className="lg:col-span-2">
-            <CardHeader>
-              <CardTitle className="text-2xl flex items-center">
-                <Icon name="FileText" size={28} className="mr-3 text-primary" />
-                Подать документы
-              </CardTitle>
-              <CardDescription>
-                Заполните форму, и мы свяжемся с вами для уточнения деталей
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-2">
-                  <Label htmlFor="fullName">ФИО *</Label>
-                  <Input
-                    id="fullName"
-                    placeholder="Иванов Иван Иванович"
-                    required
-                    value={formData.fullName}
-                    onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                  />
-                </div>
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Этапы поступления</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Простой и понятный процесс от подачи документов до зачисления
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+            {steps.map((step, index) => (
+              <div key={index} className="relative">
+                <Card className="h-full hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <div className="h-14 w-14 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-2xl font-bold mb-4">
+                      {step.number}
+                    </div>
+                    <CardTitle className="text-lg">{step.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground">{step.description}</p>
+                  </CardContent>
+                </Card>
+                {index < steps.length - 1 && (
+                  <div className="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2">
+                    <Icon name="ArrowRight" className="h-6 w-6 text-muted-foreground" />
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email *</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="example@mail.ru"
-                    required
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="phone">Телефон *</Label>
-                  <Input
-                    id="phone"
-                    type="tel"
-                    placeholder="+7 (900) 123-45-67"
-                    required
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="specialty">Специальность *</Label>
-                  <Select value={formData.specialty} onValueChange={(value) => setFormData({ ...formData, specialty: value })}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Выберите специальность" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="it">Информационные технологии</SelectItem>
-                      <SelectItem value="economy">Экономика и бухгалтерский учет</SelectItem>
-                      <SelectItem value="law">Юриспруденция</SelectItem>
-                      <SelectItem value="construction">Строительство и эксплуатация зданий</SelectItem>
-                      <SelectItem value="medical">Медицинское дело</SelectItem>
-                      <SelectItem value="tourism">Туризм и гостеприимство</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="message">Дополнительная информация</Label>
-                  <Textarea
-                    id="message"
-                    placeholder="Укажите дополнительную информацию, вопросы или особые обстоятельства"
-                    rows={4}
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  />
-                </div>
-
-                <Button type="submit" size="lg" className="w-full">
-                  <Icon name="Send" size={18} className="mr-2" />
-                  Отправить заявку
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-
-          <div className="space-y-6">
+      <section className="py-16 bg-secondary/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Необходимые документы</h2>
+              <p className="text-muted-foreground">
+                Подготовьте следующие документы для поступления
+              </p>
+            </div>
             <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center text-xl">
-                  <Icon name="Phone" size={24} className="mr-2 text-primary" />
-                  Контакты
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-start">
-                  <Icon name="MapPin" size={20} className="mr-3 mt-1 text-muted-foreground flex-shrink-0" />
-                  <div>
-                    <p className="font-medium">Адрес</p>
-                    <p className="text-sm text-muted-foreground">г. Москва, ул. Образцова, д. 15</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <Icon name="Phone" size={20} className="mr-3 mt-1 text-muted-foreground flex-shrink-0" />
-                  <div>
-                    <p className="font-medium">Телефон</p>
-                    <p className="text-sm text-muted-foreground">+7 (495) 123-45-67</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <Icon name="Mail" size={20} className="mr-3 mt-1 text-muted-foreground flex-shrink-0" />
-                  <div>
-                    <p className="font-medium">Email</p>
-                    <p className="text-sm text-muted-foreground">admission@college.edu</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <Icon name="Clock" size={20} className="mr-3 mt-1 text-muted-foreground flex-shrink-0" />
-                  <div>
-                    <p className="font-medium">График работы</p>
-                    <p className="text-sm text-muted-foreground">Пн-Пт: 9:00 - 18:00</p>
-                    <p className="text-sm text-muted-foreground">Сб-Вс: выходной</p>
-                  </div>
-                </div>
+              <CardContent className="pt-6">
+                <ul className="space-y-3">
+                  {documents.map((doc, index) => (
+                    <li key={index} className="flex items-start space-x-3">
+                      <Icon name="CheckCircle2" className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                      <span className="text-sm">{doc}</span>
+                    </li>
+                  ))}
+                </ul>
               </CardContent>
             </Card>
+          </div>
+        </div>
+      </section>
 
-            <Card className="bg-accent">
-              <CardHeader>
-                <CardTitle className="text-xl">Приемная кампания 2025</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3 text-sm">
-                  <div className="flex justify-between">
-                    <span className="font-medium">Начало приема:</span>
-                    <span>20 июня</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="font-medium">Окончание приема:</span>
-                    <span>15 августа</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="font-medium">Зачисление:</span>
-                    <span>25 августа</span>
-                  </div>
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Важные даты</h2>
+              <p className="text-muted-foreground">
+                Календарь приемной кампании 2025
+              </p>
+            </div>
+            <Card>
+              <CardContent className="pt-6">
+                <div className="space-y-4">
+                  {importantDates.map((item, index) => (
+                    <div key={index}>
+                      <div className="flex items-center justify-between py-3">
+                        <div className="flex items-center space-x-4">
+                          <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                            <Icon name="Calendar" className="h-5 w-5 text-primary" />
+                          </div>
+                          <div>
+                            <div className="font-semibold">{item.event}</div>
+                            <div className="text-sm text-muted-foreground">{item.date}</div>
+                          </div>
+                        </div>
+                      </div>
+                      {index < importantDates.length - 1 && <Separator />}
+                    </div>
+                  ))}
                 </div>
               </CardContent>
             </Card>
           </div>
         </div>
+      </section>
 
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-2xl flex items-center">
-              <Icon name="HelpCircle" size={28} className="mr-3 text-primary" />
-              Часто задаваемые вопросы
-            </CardTitle>
-            <CardDescription>
-              Ответы на самые популярные вопросы абитуриентов
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Accordion type="single" collapsible className="w-full">
-              {faqItems.map((item, index) => (
-                <AccordionItem key={index} value={`item-${index}`}>
-                  <AccordionTrigger className="text-left">{item.question}</AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground">
-                    {item.answer}
-                  </AccordionContent>
-                </AccordionItem>
+      <section className="py-16 bg-secondary/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Контакты приемной комиссии</h2>
+              <p className="text-muted-foreground">
+                Свяжитесь с нами любым удобным способом
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-6">
+              {contacts.map((contact, index) => (
+                <Card key={index} className="hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <div className="flex items-start space-x-4">
+                      <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                        <Icon name={contact.icon as any} className="h-5 w-5 text-primary" />
+                      </div>
+                      <div>
+                        <CardTitle className="text-lg mb-1">{contact.title}</CardTitle>
+                        <CardDescription className="text-foreground">{contact.value}</CardDescription>
+                      </div>
+                    </div>
+                  </CardHeader>
+                </Card>
               ))}
-            </Accordion>
-          </CardContent>
-        </Card>
-      </main>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-primary text-primary-foreground">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center space-y-6">
+            <h2 className="text-3xl md:text-4xl font-bold">Готовы подать документы?</h2>
+            <p className="text-lg opacity-90">
+              Начните процесс поступления прямо сейчас, заполнив онлайн-заявление
+            </p>
+            <Link to="/apply">
+              <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold text-base px-8">
+                Подать документы онлайн
+                <Icon name="ArrowRight" className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
     </div>
   );
 }

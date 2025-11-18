@@ -1,246 +1,242 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import Icon from "@/components/ui/icon";
-import { useState } from "react";
-import { toast } from "sonner";
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import Icon from '@/components/ui/icon';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+
+const contactInfo = [
+  {
+    icon: 'MapPin',
+    title: 'Адрес',
+    lines: [
+      '125009, г. Москва',
+      'ул. Академическая, д. 1',
+      'Метро "Площадь Гагарина"',
+    ],
+  },
+  {
+    icon: 'Phone',
+    title: 'Телефоны',
+    lines: [
+      'Приемная комиссия: +7 (495) 123-45-67',
+      'Деканат: +7 (495) 123-45-68',
+      'Справочная: +7 (495) 123-45-69',
+    ],
+  },
+  {
+    icon: 'Mail',
+    title: 'Email',
+    lines: [
+      'Общие вопросы: info@university.ru',
+      'Поступление: admission@university.ru',
+      'Пресс-служба: press@university.ru',
+    ],
+  },
+  {
+    icon: 'Clock',
+    title: 'Часы работы',
+    lines: [
+      'Понедельник - Пятница: 9:00 - 18:00',
+      'Суббота: 10:00 - 15:00',
+      'Воскресенье: выходной',
+    ],
+  },
+];
+
+const departments = [
+  {
+    name: 'Приемная комиссия',
+    head: 'Иванова Елена Петровна',
+    phone: '+7 (495) 123-45-67',
+    email: 'admission@university.ru',
+    room: 'Каб. 101',
+  },
+  {
+    name: 'Учебный отдел',
+    head: 'Петров Сергей Иванович',
+    phone: '+7 (495) 123-45-70',
+    email: 'education@university.ru',
+    room: 'Каб. 205',
+  },
+  {
+    name: 'Отдел международных связей',
+    head: 'Смирнова Ольга Александровна',
+    phone: '+7 (495) 123-45-71',
+    email: 'international@university.ru',
+    room: 'Каб. 310',
+  },
+];
 
 export default function Contacts() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: ""
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast.success("Сообщение отправлено! Мы ответим вам в ближайшее время.");
-    setFormData({ name: "", email: "", subject: "", message: "" });
-  };
-
   return (
-    <div className="min-h-screen bg-background">
-      <header className="bg-primary text-primary-foreground py-16">
+    <div className="min-h-screen flex flex-col">
+      <Header />
+
+      <section className="py-12 bg-gradient-to-br from-primary/5 to-accent/5">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Контакты</h1>
-          <p className="text-lg md:text-xl opacity-90 max-w-2xl">
-            Свяжитесь с нами удобным для вас способом
-          </p>
+          <div className="max-w-3xl mx-auto text-center space-y-4">
+            <h1 className="text-4xl md:text-5xl font-bold">Контакты</h1>
+            <p className="text-lg text-muted-foreground">
+              Свяжитесь с нами любым удобным способом
+            </p>
+          </div>
         </div>
-      </header>
+      </section>
 
-      <main className="container mx-auto px-4 py-12">
-        <div className="grid lg:grid-cols-3 gap-8 mb-12">
-          <Card>
-            <CardHeader>
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-3">
-                <Icon name="MapPin" size={24} className="text-primary" />
-              </div>
-              <CardTitle>Адрес</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                г. Москва, ул. Образцова, д. 15<br />
-                м. Новослободская<br />
-                Индекс: 127055
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-3">
-                <Icon name="Phone" size={24} className="text-primary" />
-              </div>
-              <CardTitle>Телефоны</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                Приемная комиссия:<br />
-                +7 (495) 123-45-67<br />
-                <br />
-                Секретарь:<br />
-                +7 (495) 123-45-68
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-3">
-                <Icon name="Mail" size={24} className="text-primary" />
-              </div>
-              <CardTitle>Email</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                Общие вопросы:<br />
-                info@college.edu<br />
-                <br />
-                Приемная комиссия:<br />
-                admission@college.edu
-              </p>
-            </CardContent>
-          </Card>
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {contactInfo.map((info, index) => (
+              <Card key={index} className="hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-3">
+                    <Icon name={info.icon as any} className="h-6 w-6 text-primary" />
+                  </div>
+                  <CardTitle className="text-lg">{info.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  {info.lines.map((line, i) => (
+                    <p key={i} className="text-sm text-muted-foreground mb-1">
+                      {line}
+                    </p>
+                  ))}
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
+      </section>
 
-        <div className="grid lg:grid-cols-2 gap-8">
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-2xl flex items-center">
-                <Icon name="MessageSquare" size={28} className="mr-3 text-primary" />
-                Форма обратной связи
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-2">
-                  <Label htmlFor="name">Ваше имя *</Label>
-                  <Input
-                    id="name"
-                    placeholder="Иван Иванов"
-                    required
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  />
-                </div>
+      <section className="py-16 bg-secondary/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Структурные подразделения</h2>
+              <p className="text-muted-foreground">
+                Контакты основных отделов университета
+              </p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6">
+              {departments.map((dept, index) => (
+                <Card key={index} className="hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <CardTitle className="text-lg">{dept.name}</CardTitle>
+                    <CardDescription>{dept.head}</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <div className="flex items-center text-sm">
+                      <Icon name="Phone" className="h-4 w-4 mr-2 text-muted-foreground shrink-0" />
+                      <span className="text-muted-foreground">{dept.phone}</span>
+                    </div>
+                    <div className="flex items-center text-sm">
+                      <Icon name="Mail" className="h-4 w-4 mr-2 text-muted-foreground shrink-0" />
+                      <span className="text-muted-foreground">{dept.email}</span>
+                    </div>
+                    <div className="flex items-center text-sm">
+                      <Icon name="MapPin" className="h-4 w-4 mr-2 text-muted-foreground shrink-0" />
+                      <span className="text-muted-foreground">{dept.room}</span>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email *</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="example@mail.ru"
-                    required
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="subject">Тема обращения *</Label>
-                  <Input
-                    id="subject"
-                    placeholder="Вопрос о поступлении"
-                    required
-                    value={formData.subject}
-                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="message">Сообщение *</Label>
-                  <Textarea
-                    id="message"
-                    placeholder="Опишите ваш вопрос подробнее"
-                    rows={6}
-                    required
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  />
-                </div>
-
-                <Button type="submit" size="lg" className="w-full">
-                  <Icon name="Send" size={18} className="mr-2" />
-                  Отправить сообщение
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-
-          <div className="space-y-8">
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Форма обратной связи</h2>
+              <p className="text-muted-foreground">
+                Задайте нам вопрос, и мы свяжемся с вами в ближайшее время
+              </p>
+            </div>
             <Card>
-              <CardHeader>
-                <CardTitle className="text-xl flex items-center">
-                  <Icon name="Clock" size={24} className="mr-2 text-primary" />
-                  График работы
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div className="flex justify-between py-2 border-b">
-                  <span className="font-medium">Понедельник - Пятница</span>
-                  <span className="text-muted-foreground">9:00 - 18:00</span>
-                </div>
-                <div className="flex justify-between py-2 border-b">
-                  <span className="font-medium">Суббота</span>
-                  <span className="text-muted-foreground">10:00 - 15:00</span>
-                </div>
-                <div className="flex justify-between py-2">
-                  <span className="font-medium">Воскресенье</span>
-                  <span className="text-muted-foreground">Выходной</span>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-xl flex items-center">
-                  <Icon name="Users" size={24} className="mr-2 text-primary" />
-                  Социальные сети
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  <a href="#" className="flex items-center p-3 rounded-lg hover:bg-secondary transition-colors">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
-                      <Icon name="MessageCircle" size={20} className="text-primary" />
+              <CardContent className="pt-6">
+                <form className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <Label htmlFor="name">Ваше имя *</Label>
+                      <Input id="name" placeholder="Иван Иванов" required />
                     </div>
-                    <div>
-                      <p className="font-medium">Telegram</p>
-                      <p className="text-sm text-muted-foreground">@college_official</p>
+                    <div className="space-y-2">
+                      <Label htmlFor="email">Email *</Label>
+                      <Input id="email" type="email" placeholder="ivanov@example.com" required />
                     </div>
-                  </a>
-
-                  <a href="#" className="flex items-center p-3 rounded-lg hover:bg-secondary transition-colors">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
-                      <Icon name="Share2" size={20} className="text-primary" />
+                  </div>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <Label htmlFor="phone">Телефон</Label>
+                      <Input id="phone" type="tel" placeholder="+7 (999) 123-45-67" />
                     </div>
-                    <div>
-                      <p className="font-medium">ВКонтакте</p>
-                      <p className="text-sm text-muted-foreground">vk.com/college</p>
+                    <div className="space-y-2">
+                      <Label htmlFor="subject">Тема обращения *</Label>
+                      <Input id="subject" placeholder="Поступление" required />
                     </div>
-                  </a>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-accent">
-              <CardHeader>
-                <CardTitle className="text-xl">Приемные часы директора</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-3">
-                  Среда: 14:00 - 17:00
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  Необходима предварительная запись по телефону секретаря
-                </p>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="message">Сообщение *</Label>
+                    <Textarea
+                      id="message"
+                      placeholder="Опишите ваш вопрос подробно..."
+                      rows={6}
+                      required
+                    />
+                  </div>
+                  <div className="flex items-start space-x-2">
+                    <input type="checkbox" id="consent" className="mt-1" required />
+                    <Label htmlFor="consent" className="text-sm text-muted-foreground cursor-pointer">
+                      Я согласен на обработку персональных данных в соответствии с{' '}
+                      <a href="#" className="text-primary hover:underline">
+                        политикой конфиденциальности
+                      </a>
+                    </Label>
+                  </div>
+                  <Button type="submit" size="lg" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-semibold">
+                    Отправить сообщение
+                    <Icon name="Send" className="ml-2 h-5 w-5" />
+                  </Button>
+                </form>
               </CardContent>
             </Card>
           </div>
         </div>
+      </section>
 
-        <Card className="mt-12">
-          <CardHeader>
-            <CardTitle className="text-2xl flex items-center">
-              <Icon name="Map" size={28} className="mr-3 text-primary" />
-              Как нас найти
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-              <div className="text-center text-muted-foreground">
-                <Icon name="MapPin" size={48} className="mx-auto mb-3" />
-                <p>Карта местоположения</p>
-                <p className="text-sm">г. Москва, ул. Образцова, д. 15</p>
-              </div>
+      <section className="py-16 bg-secondary/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Как нас найти</h2>
+              <p className="text-muted-foreground">
+                Университет расположен в центре Москвы, в 5 минутах от метро
+              </p>
             </div>
-          </CardContent>
-        </Card>
-      </main>
+            <Card className="overflow-hidden">
+              <div className="h-96 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+                <div className="text-center space-y-4">
+                  <Icon name="Map" className="h-16 w-16 mx-auto text-primary" />
+                  <p className="text-muted-foreground">
+                    Интерактивная карта<br />
+                    <span className="text-sm">г. Москва, ул. Академическая, д. 1</span>
+                  </p>
+                  <Button variant="outline">
+                    Открыть в Яндекс.Картах
+                    <Icon name="ExternalLink" className="ml-2 h-4 w-4" />
+                  </Button>
+                </div>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
     </div>
   );
 }
